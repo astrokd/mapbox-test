@@ -6,15 +6,17 @@ mapboxgl.accessToken = process.env.REACT_APP_API_KEY1
 export default function App() {
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-121.739107);
-    const [lat, setLat] = useState(47.506961);
-    const [zoom, setZoom] = useState(9);
+    const [lng, setLng] = useState(-121.737);
+    const [lat, setLat] = useState(47.495);
+    const [zoom, setZoom] = useState(13);
     
     useEffect(() => {
         if (map.current) return; // initialize map only once
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/kevek/ckfmq9lqb017x19l9zsuvjwvo',
+            pitch: 45,
+            bearing: 0,
             center: [lng, lat],
             zoom: zoom
         });
@@ -31,10 +33,10 @@ export default function App() {
 
     return (
         <div>
-          <div className="sidebar">
+            <div className="sidebar">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-          </div>
-          <div ref={mapContainer} className="map-container" />
+            </div>
+            <div ref={mapContainer} className="map-container" />
         </div>
-      );
+    );
 }
