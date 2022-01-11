@@ -9,6 +9,9 @@ export default function App() {
     const [lng, setLng] = useState(-121.737);
     const [lat, setLat] = useState(47.495);
     const [zoom, setZoom] = useState(13);
+    // new mapboxgl.Marker()
+    //     .setLngLat([-121.723196, 47.487763])
+    //     .addTo(map);
     
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -21,9 +24,6 @@ export default function App() {
             center: [lng, lat],
             zoom: zoom
         });
-        // const marker1 = new mapboxgl.Marker()
-        //     .setLngLat([-121.737, 47.495])
-        //     .addTo(map);
     });
 
     useEffect(() => {
