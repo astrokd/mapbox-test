@@ -12,6 +12,7 @@ export default function App() {
     
     useEffect(() => {
         if (map.current) return; // initialize map only once
+
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/kevek/ckfmq9lqb017x19l9zsuvjwvo',
@@ -20,6 +21,9 @@ export default function App() {
             center: [lng, lat],
             zoom: zoom
         });
+        // const marker1 = new mapboxgl.Marker()
+        //     .setLngLat([-121.737, 47.495])
+        //     .addTo(map);
     });
 
     useEffect(() => {
@@ -34,7 +38,7 @@ export default function App() {
     return (
         <div>
             <div className="sidebar">
-            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+            Lng: {lng} | Lat: {lat}
             </div>
             <div ref={mapContainer} className="map-container" />
         </div>
