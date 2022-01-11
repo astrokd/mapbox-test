@@ -11,55 +11,44 @@ const Map = () => {
   const [lng, setLng] = useState(-100);
   const [lat, setLat] = useState(40);
   const [zoom, setZoom] = useState(3);
+    
 
   // Initialize map when component mounts
   useEffect(() => {
+
+    const geojson = {
+      'type': 'FeatureCollection',
+      'features': [
+      {
+      'type': 'Feature',
+      'geometry': {
+      'type': 'Point',
+      'coordinates': [-77.032, 38.913]
+      },
+      'properties': {
+      'title': 'Mapbox',
+      'description': 'Washington, D.C.'
+      }
+      },
+      {
+      'type': 'Feature',
+      'geometry': {
+      'type': 'Point',
+      'coordinates': [-122.414, 37.776]
+      },
+      'properties': {
+      'title': 'Mapbox',
+      'description': 'San Francisco, California'
+      }
+      }
+      ]
+    };
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lng, lat],
       zoom: zoom
-    });
-
-    map.on('load', () => {
-      // Load an image from an external URL.
-      map.loadImage(
-      './mapbox-marker-icon-red.svg',
-      (error, image) => {
-      if (error) throw error;
-       
-      // Add the image to the map style.
-      map.addImage('marker', image);
-       
-      // Add a data source containing one point feature.
-      map.addSource('point', {
-        'type': 'geojson',
-        'data': {
-          'type': 'FeatureCollection',
-          'features': [
-            {
-              'type': 'Feature',
-              'geometry': {
-              'type': 'Point',
-              'coordinates': [-100, 40]
-      }
-      }
-      ]
-      }
-      });
-       
-      // Add a layer to use the image to represent the data.
-      map.addLayer({
-      'id': 'points',
-      'type': 'symbol',
-      'source': 'point', // reference the data source
-      'layout': {
-      'icon-image': 'marker', // reference the image
-      'icon-size': 1
-      }
-      });
-      }
-      );
     });
 
     // Add navigation control (the +/- zoom buttons)
