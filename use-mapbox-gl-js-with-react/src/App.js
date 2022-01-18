@@ -9,10 +9,7 @@ export default function App(props) {
     const mapstyle = props.mapstyle
     const [lng, setLng] = useState(props.Lng);
     const [lat, setLat] = useState(props.Lat);
-    const [zoom, setZoom] = useState(13);
-    // new mapboxgl.Marker()
-    //     .setLngLat([-121.723196, 47.487763])
-    //     .addTo(map);
+    const [zoom, setZoom] = useState(14);
     
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -39,7 +36,8 @@ export default function App(props) {
     return (
         <div>
             <div className="sidebar">
-            { props.title }: Lng: {lng} | Lat: {lat}
+            { props.title }:<br />
+            Lng: {lng} | Lat: {lat}
             </div>
             <div ref={mapContainer} className="map-container" />
         </div>
