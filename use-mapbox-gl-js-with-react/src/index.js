@@ -6,7 +6,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App title="Mount Si" mapstyle="mapbox://styles/kevek/ckfmq9lqb017x19l9zsuvjwvo" Lat={47.495} Lng={-121.737} />
   </React.StrictMode>,
   document.getElementById('root')
 );
