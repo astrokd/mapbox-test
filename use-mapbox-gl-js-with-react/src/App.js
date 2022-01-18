@@ -3,22 +3,20 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 
 mapboxgl.accessToken = process.env.REACT_APP_API_KEY1
 
-export default function App() {
+export default function App(props) {
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-121.737);
-    const [lat, setLat] = useState(47.495);
-    const [zoom, setZoom] = useState(13);
-    // new mapboxgl.Marker()
-    //     .setLngLat([-121.723196, 47.487763])
-    //     .addTo(map);
+    const mapstyle = props.mapstyle
+    const [lng, setLng] = useState(props.Lng);
+    const [lat, setLat] = useState(props.Lat);
+    const [zoom, setZoom] = useState(14);
     
     useEffect(() => {
         if (map.current) return; // initialize map only once
 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/kevek/ckfmq9lqb017x19l9zsuvjwvo',
+            style: mapstyle,
             pitch: 45,
             bearing: 0,
             center: [lng, lat],
@@ -38,6 +36,7 @@ export default function App() {
     return (
         <div>
             <div className="sidebar">
+            { props.title }:<br />
             Lng: {lng} | Lat: {lat}
             </div>
             <div ref={mapContainer} className="map-container" />
